@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@axelar-network/axelar-local-dev": "^2.3.2"
+  }
+}
