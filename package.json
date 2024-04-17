@@ -1,6 +1,9 @@
 {
-  "type": "module",
-  "dependencies": {
-    "@axelar-network/axelar-local-dev": "^2.3.2"
-  }
+   "dependencies": {
+      "@axelar-network/axelar-local-dev": "^2.3.2"
+   },
+   "devDependencies": {
+      "@eslint/js": "^9.0.0",
+      "eslint": "^9.0.0"
+   }
 }
