@@ -44,6 +44,17 @@ async function printGatewayBalance(
   );
 }
 
+async function printContractBalance(
+  network: Network,
+  tokenContract: Contract,
+  tokenSymbol: string
+) {
+  const balance = await tokenContract.balanceOf(tokenContract.address);
+  console.log(
+    `[${network.name}]: Token Contract: ${tokenContract.address}, Bal: ${balance} ${tokenSymbol}`
+  );
+}
+
 function printTransaction(
   network: Network,
   tx: ethers.providers.TransactionResponse
@@ -79,7 +90,6 @@ async function main() {
   // Deploy Northern Trust Carbon Credit token on the network 1
   console.log("=====================================");
   console.log(`Deploy ${tokenSymbol} on ${networkName1}:`);
-  // QUESTION: which address it deployed to? Contract address?
   await network1.deployToken(tokenName, tokenSymbol, 6, BigInt(100_000e6));
 
   console.log("=====================================");
@@ -89,7 +99,6 @@ async function main() {
   console.log("=====================================");
   console.log(`Checking ${tokenSymbol} token contract on ${networkName1}`);
   const tokenContract1 = await network1.getTokenContract(tokenSymbol);
-  console.log(`Contract addr: ${tokenContract1.address}`);
   await printGatewayBalance(network1, tokenContract1, tokenSymbol);
 
   // const provider = ethers.getDefaultProvider();
@@ -211,16 +220,6 @@ async function main() {
   await printCustomTokenBalance(network2, n2user1, tokenContract2, tokenSymbol);
   await printCustomTokenBalance(network2, n2user2, tokenContract2, tokenSymbol);
   await printGatewayBalance(network2, tokenContract2, tokenSymbol);
-
-  // // Log the token balances
-  // console.log(
-  //   (await usdcEthContract.balanceOf(ethUserWallet.address)) / 1e6,
-  //   "aUSDC in Ethereum wallet"
-  // );
-  // console.log(
-  //   (await usdcAvalancheContract.balanceOf(avaUserWallet.address)) / 1e6,
-  //   "aUSDC in Avalanche wallet"
-  // );
 }
 
 main();
