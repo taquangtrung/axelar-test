@@ -167,9 +167,11 @@ async function main() {
     .approve(network1.gateway.address, crosschainAmt);
   await approveNetwork1GatewayTx.wait();
   printTransaction(network1, approveNetwork1GatewayTx);
+  await printEthBalance(network1, n1user1);
   await printCustomTokenBalance(network1, n1user1, tokenContract1, tokenSymbol);
   await printCustomTokenBalance(network1, n1user2, tokenContract1, tokenSymbol);
   await printGatewayBalance(network1, tokenContract1, tokenSymbol);
+  await printEthBalance(network2, n2user1);
   await printCustomTokenBalance(network2, n2user1, tokenContract2, tokenSymbol);
   await printCustomTokenBalance(network2, n2user2, tokenContract2, tokenSymbol);
   await printGatewayBalance(network2, tokenContract2, tokenSymbol);
@@ -185,9 +187,11 @@ async function main() {
     .sendToken(network2.name, n2user1.address, tokenSymbol, crosschainAmt);
   await network1GatewayTx.wait();
   printTransaction(network1, approveNetwork1GatewayTx);
+  await printEthBalance(network1, n1user1);
   await printCustomTokenBalance(network1, n1user1, tokenContract1, tokenSymbol);
   await printCustomTokenBalance(network1, n1user2, tokenContract1, tokenSymbol);
   await printGatewayBalance(network1, tokenContract1, tokenSymbol);
+  await printEthBalance(network2, n2user1);
   await printCustomTokenBalance(network2, n2user1, tokenContract2, tokenSymbol);
   await printCustomTokenBalance(network2, n2user2, tokenContract2, tokenSymbol);
   await printGatewayBalance(network2, tokenContract2, tokenSymbol);
@@ -199,9 +203,11 @@ async function main() {
 
   console.log("=====================================");
   console.log("Checking balance after transfering...");
+  await printEthBalance(network1, n1user1);
   await printCustomTokenBalance(network1, n1user1, tokenContract1, tokenSymbol);
   await printCustomTokenBalance(network1, n1user2, tokenContract1, tokenSymbol);
   await printGatewayBalance(network1, tokenContract1, tokenSymbol);
+  await printEthBalance(network2, n2user1);
   await printCustomTokenBalance(network2, n2user1, tokenContract2, tokenSymbol);
   await printCustomTokenBalance(network2, n2user2, tokenContract2, tokenSymbol);
   await printGatewayBalance(network2, tokenContract2, tokenSymbol);
