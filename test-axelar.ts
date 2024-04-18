@@ -5,12 +5,18 @@ import {
 } from "@axelar-network/axelar-local-dev";
 import { ethers, Wallet, Contract, providers } from "ethers";
 
+/**
+ * Print Ether balance of a wallet
+ */
 async function printEthBalance(network: Network, wallet: Wallet) {
   const address = wallet.address;
   const balance = await wallet.getBalance();
   console.log(`[${network.name}]: ${address}, Bal: ${balance} wei`);
 }
 
+/**
+ * Print Ether balance of multiple wallets
+ */
 async function printEthBalanceWallets(network: Network, wallets: Wallet[]) {
   for (let i = 0; i < wallets.length; i++) {
     const wallet = wallets[i];
@@ -20,6 +26,9 @@ async function printEthBalanceWallets(network: Network, wallets: Wallet[]) {
   }
 }
 
+/**
+ * Print token balance of a wallet.
+ */
 async function printCustomTokenBalance(
   network: Network,
   wallet: Wallet,
@@ -32,6 +41,9 @@ async function printCustomTokenBalance(
   );
 }
 
+/**
+ * Print token balance of a gateway.
+ */
 async function printGatewayBalance(
   network: Network,
   tokenContract: Contract,
@@ -44,6 +56,9 @@ async function printGatewayBalance(
   );
 }
 
+/**
+ * Print token balance of a contract.
+ */
 async function printContractBalance(
   network: Network,
   tokenContract: Contract,
@@ -55,6 +70,9 @@ async function printContractBalance(
   );
 }
 
+/**
+ * Print transaction details.
+ */
 function printTransaction(
   network: Network,
   tx: ethers.providers.TransactionResponse
@@ -62,6 +80,9 @@ function printTransaction(
   console.log(`[${network.name}]: Transaction: ${JSON.stringify(tx, null, 2)}`);
 }
 
+/**
+ * Main script to test local development environments
+ */
 async function main() {
   // Configurations
   const networkName1 = "Ethereum";
@@ -100,10 +121,6 @@ async function main() {
   console.log(`Checking ${tokenSymbol} token contract on ${networkName1}`);
   const tokenContract1 = await network1.getTokenContract(tokenSymbol);
   await printGatewayBalance(network1, tokenContract1, tokenSymbol);
-
-  // const provider = ethers.getDefaultProvider();
-  // const balance1 = await provider.getBalance(contract1.address);
-  // console.log(`Contract1: ${contract1.address}, balance: ${balance1}`);
 
   // Deploy Norhtern Trust Carbon Credit token on the Avalanche network
   console.log("=====================================");
