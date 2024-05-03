@@ -25,6 +25,7 @@
   Serving 3 networks on port 8500
   ```
 
+
 - Fork mainnet for testing:
 
   ```typescript
@@ -36,7 +37,10 @@
   });
   ```
 
+  NOTE: currently encountering a bug in forking test nest.
+
+
+
 ## Set up a standalone cross-chain EVM network
 
 - https://github.com/axelarnetwork/axelar-local-dev/blob/078ff52dd7dfb9f9b4dea0942c207fa9cc835523/docs/guide_create_and_exports.md
-
