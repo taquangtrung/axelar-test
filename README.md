@@ -73,4 +73,28 @@
 
 ## Running Axelar Node
 
-- https://docs.axelar.dev/node/basic
+- Tutorial:
+  + https://docs.axelar.dev/node/basic
+  + https://docs.axelar.dev/node/config-node
+
+### Configure Axelar node:
+
+- Required hardware:
+  + Hardware: 4 cores, 8-16GB RAM, 512 GB drive, arm64 or amd64.
+  + Recommended 6-8 cores, 16-32 GB RAM, 1 TB+ drive.
+
+- Configure testnet:
+  ``` sh
+  mkdir $HOME/.axelar_testnet
+  export AXELARD_HOME=$HOME/.axelar_testnet
+
+  git clone https://github.com/axelarnetwork/axelar-community.git
+  ```
+
+- Start the Axelar node:
+  ```sh
+  $AXELARD_HOME/bin/axelard start --home $AXELARD_HOME >> $AXELARD_HOME/logs/axelard.log 2>&1 &
+
+  # View log in real time
+  tail -f $AXELARD_HOME/logs/axelard.log
+  ```
